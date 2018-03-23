@@ -98,8 +98,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
                     // Add the request to the RequestQueue.
                     queue.add(stringRequest);
-                    break;
                 }
+                break;
             case R.id.new_User:
                 Intent intent=new Intent(Login.this,Registration.class);
                 startActivity(intent);
@@ -108,6 +108,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
 
     }
 
+    //GETTING DATA FROM EDITTEXT AND STORING THEM IN STRING
     public void Initialize(){
         tdphone=editText_phone.getText().toString();
         tdpassword=editText_password.getText().toString();
@@ -116,12 +117,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     private boolean validations(){
         boolean value=true;
         if(tdphone.isEmpty()||tdphone.length()>11){
-            editText_phone.setError("Check The Number again");
+            editText_phone.setError("Required Field");
             value=false;
         }
 
         if(tdpassword.isEmpty()){
-            editText_password.setError("Please Enter The Password");
+            editText_password.setError("Required Field");
             value=false;
         }
         return value;

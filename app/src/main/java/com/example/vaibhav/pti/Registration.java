@@ -134,7 +134,7 @@ public class Registration extends AppCompatActivity implements View.OnClickListe
             cpassw.setError("Enter Password");
             value=false;
         }
-        if (tdemail.isEmpty()|| Patterns.EMAIL_ADDRESS.matcher(tdemail).matches()) {
+        if (tdemail.isEmpty()|| !Patterns.EMAIL_ADDRESS.matcher(tdemail).matches()) {
             email.setError("Enter Valid Email");
             value=false;
         }
