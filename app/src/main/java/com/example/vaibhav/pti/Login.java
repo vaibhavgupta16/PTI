@@ -2,9 +2,11 @@ package com.example.vaibhav.pti;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 
 import android.widget.Button;
@@ -18,16 +20,23 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.vaibhav.pti.ModelClasses.Parent_model;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class Login extends AppCompatActivity implements View.OnClickListener {
-    Button button_login,button_newUser;
-    EditText editText_password,editText_phone;
+    public static final String MY_PREFS ="My Prefrences" ;
+    Button button_login;
+    EditText editText_password,editText_email;
     TextView textView_forgot;
     RequestQueue queue;
-    String TAG="courserequest",tdphone,tdpassword;
+    String TAG="courserequest", tdemail,tdpassword;
+    Parent_model p;
+    ArrayList<Parent_model> arrayList= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,30 +44,23 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.activity_login);
 
         button_login=findViewById(R.id.login);
-        button_newUser=findViewById(R.id.new_User);
-
+        
         editText_password=findViewById(R.id.password);
-        editText_phone=findViewById(R.id.phone);
+        editText_email=findViewById(R.id.phone);
         textView_forgot=findViewById(R.id.forgot_password);
 
         button_login.setOnClickListener(this);
-        button_newUser.setOnClickListener(this);
-
-
+        
     }
 
     @Override
     public void onClick(View v) {
         Initialize();
-        final String result="Login Failed!";
         switch (v.getId()){
             case R.id.login:
-                if(!validations()){
-
-                }
-                else {
+                if(validations()){
                     queue = Volley.newRequestQueue(this);
-                    String url = "http://iamguptag.000webhostapp.com/Register.php?act=Login&td_phone=" + tdphone + "&td_password=" + tdpassword + "";
+                    String url = "http://parportal.000webhostapp.com/login.php?act=Parent_Login&email="+tdemail+"&password="+tdpassword;
                     final ProgressDialog pDialog = new ProgressDialog(this);
                     pDialog.setMessage("Loading...");
                     pDialog.show();
@@ -76,10 +78,26 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                     try {
                                         JSONObject jobj = new JSONObject(response);
                                         String success = jobj.getString("result");
-                                        if (success.equals(result)) {
-                                            Toast.makeText(getApplicationContext(), "Phone No. or Password Is Incorrect", Toast.LENGTH_SHORT).show();
-                                        } else {
+                                        JSONArray jarr=jobj.getJSONArray("data");
+                                        for (int i=0;i<jarr.length();i++)
+                                        {
+                                            JSONObject jobj1=jarr.getJSONObject(i);
+                                            String name=jobj1.getString("first_name");
+                                            String phone=jobj1.getString("phone_no");
+                                            String address=jobj1.getString("address");
+                                            String email=jobj1.getString("email");
+                                            p=new Parent_model(name,address,email,phone);
+                                            arrayList.add(p);
+                                        }
+                                        if (success.equals("Login Successfull")) {
+                                            SharedPreferences.Editor editor= getSharedPreferences(MY_PREFS,MODE_PRIVATE).edit();
+                                            editor.putBoolean("loginkey",true);
+                                            editor.apply();
+                                            Intent intent = new Intent(Login.this,Home.class);
+                                            startActivity(intent);
                                             Toast.makeText(getApplicationContext(), "Sign in Complete", Toast.LENGTH_SHORT).show();
+                                        } else {
+                                            Toast.makeText(getApplicationContext(), "Phone No. or Password Is Incorrect", Toast.LENGTH_SHORT).show();
                                         }
 
 
@@ -99,25 +117,24 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                     // Add the request to the RequestQueue.
                     queue.add(stringRequest);
                 }
+                else {
+                     Toast.makeText(getApplicationContext(),"Something Went Wrong",Toast.LENGTH_LONG).show();
+                }
                 break;
-            case R.id.new_User:
-                Intent intent=new Intent(Login.this,Registration.class);
-                startActivity(intent);
-                break;
-        }
+            }
 
     }
 
     //GETTING DATA FROM EDITTEXT AND STORING THEM IN STRING
     public void Initialize(){
-        tdphone=editText_phone.getText().toString();
+        tdemail =editText_email.getText().toString();
         tdpassword=editText_password.getText().toString();
     }
 
     private boolean validations(){
         boolean value=true;
-        if(tdphone.isEmpty()||tdphone.length()>11){
-            editText_phone.setError("Required Field");
+        if(tdemail.isEmpty()|| !Patterns.EMAIL_ADDRESS.matcher(tdemail).matches()){
+            editText_email.setError("Required Field");
             value=false;
         }
 

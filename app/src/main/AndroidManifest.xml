@@ -26,12 +26,14 @@
         </activity>
         <activity
             android:name=".Login"
-            android:label="@string/action_sign_in">
-
-        </activity>
+            android:label="@string/action_sign_in"></activity>
         <activity
             android:name=".Registration"
-            android:label="Registration"></activity>
+            android:label="Registration" />
+        <activity
+            android:name=".Home"
+            android:label="@string/title_activity_home"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

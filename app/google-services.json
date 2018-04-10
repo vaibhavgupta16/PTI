@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "450799022452",
+    "firebase_url": "https://ptidatabase.firebaseio.com",
+    "project_id": "ptidatabase",
+    "storage_bucket": "ptidatabase.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:450799022452:android:11e09086a81014b4",
+        "android_client_info": {
+          "package_name": "com.example.vaibhav.pti"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "450799022452-7oeab48msc2vpgj968h7fcite8scsqpa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAilv5P4nASu03y4zyyDjZXM4-iZy3YVag"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
