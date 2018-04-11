@@ -7,16 +7,20 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.example.vaibhav.pti.DashboardClasses.Parent;
 import com.example.vaibhav.pti.ModelClasses.Parent_model;
 import com.example.vaibhav.pti.R;
+
+import java.util.ArrayList;
 
 
 public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHolder> {
 
-    private FragmentActivity activity;
-    private Parent_model p=new Parent_model();
-    public ParentAdapter(FragmentActivity activity) {
-        this.activity=activity;
+    private Parent parent;
+    ArrayList<Parent_model> arrayList=new ArrayList<Parent_model>();
+    public ParentAdapter(Parent parent, ArrayList<Parent_model> arrayList) {
+        this.parent=parent;
+        this.arrayList=arrayList;
     }
 
     @Override
@@ -27,16 +31,16 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(ParentAdapter.MyViewHolder holder, int position) {
-        holder.name.setText(p.getFname());
-        holder.address.setText(p.getAddress());
-        holder.email.setText(p.getAddress());
-        holder.phone.setText(p.getPhone());
+        holder.name.setText(arrayList.get(position).getFname());
+        holder.address.setText(arrayList.get(position).getAddress());
+        holder.email.setText(arrayList.get(position).getEmail());
+        holder.phone.setText(arrayList.get(position).getPhone());
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return arrayList.size();
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {

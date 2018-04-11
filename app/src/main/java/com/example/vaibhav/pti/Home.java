@@ -14,22 +14,36 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
-import com.example.vaibhav.pti.Fragments.ParentDetail;
+import com.example.vaibhav.pti.Fragments.Dashboard;
 
 import static com.example.vaibhav.pti.Login.MY_PREFS;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-
-    Toolbar toolbar;
     SharedPreferences sharedPreferences;
+    TextView name,email;
+    Toolbar toolbar;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        View header=navigationView.getHeaderView(0);
+        name=header.findViewById(R.id.nav_header_text1);
+        email=header.findViewById(R.id.nav_header_text2);
+
+        sharedPreferences=getSharedPreferences(MY_PREFS,MODE_PRIVATE);
+        String n=sharedPreferences.getString("Name",null);
+        String e=sharedPreferences.getString("email",null);
+
+        name.setText(n);
+        email.setText(e);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -46,8 +60,12 @@ public class Home extends AppCompatActivity
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+        Dashboard dashboard=new Dashboard();
+        android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.frame,dashboard);
+        fragmentTransaction.commit();
     }
 
     @Override
@@ -78,6 +96,9 @@ public class Home extends AppCompatActivity
         if (id == R.id.action_settings) {
             return true;
         }
+        if(id == R.id.action_home){
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }
@@ -95,11 +116,7 @@ public class Home extends AppCompatActivity
             toolbar.setTitle("Daily Diary");
 
         } else if (id == R.id.nav_profile) {
-            toolbar.setTitle("Profile");
-            ParentDetail parentDetail=new ParentDetail();
-            android.support.v4.app.FragmentTransaction fragmentTransaction=getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frame,parentDetail);
-            fragmentTransaction.commit();
+
 
         } else if (id == R.id.nav_logout) {
             SharedPreferences.Editor editor=getSharedPreferences(MY_PREFS,MODE_PRIVATE).edit();

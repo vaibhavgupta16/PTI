@@ -9,7 +9,6 @@ import android.os.Bundle;
 import static com.example.vaibhav.pti.Login.MY_PREFS;
 
 public class SplashScreen extends AppCompatActivity {
-    private static int time=3000;
     SharedPreferences sharedPreferences;
 
     @Override
@@ -28,7 +27,7 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-            }, time);
+            }, 3000);
         }
         else{
             new Handler().postDelayed(new Runnable() {
@@ -38,7 +37,7 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-            },time);
+            },3000);
         }
     }
 }

@@ -34,7 +34,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     EditText editText_password,editText_email;
     TextView textView_forgot;
     RequestQueue queue;
-    String TAG="courserequest", tdemail,tdpassword;
+    String TAG="courserequest", tdemail,tdpassword,name,email,regid;
     Parent_model p;
     ArrayList<Parent_model> arrayList= new ArrayList<>();
 
@@ -82,17 +82,17 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                         for (int i=0;i<jarr.length();i++)
                                         {
                                             JSONObject jobj1=jarr.getJSONObject(i);
-                                            String name=jobj1.getString("first_name");
-                                            String phone=jobj1.getString("phone_no");
-                                            String address=jobj1.getString("address");
-                                            String email=jobj1.getString("email");
-                                            p=new Parent_model(name,address,email,phone);
-                                            arrayList.add(p);
+                                            name=jobj1.getString("first_name");
+                                            email=jobj1.getString("email");
+                                            regid=jobj1.getString("stu_reg_id");
                                         }
                                         if (success.equals("Login Successfull")) {
                                             SharedPreferences.Editor editor= getSharedPreferences(MY_PREFS,MODE_PRIVATE).edit();
                                             editor.putBoolean("loginkey",true);
-                                            editor.apply();
+                                            editor.putString("Name",name);
+                                            editor.putString("email",email);
+                                            editor.putString("Sturegid",regid);
+                                            editor.commit();
                                             Intent intent = new Intent(Login.this,Home.class);
                                             startActivity(intent);
                                             Toast.makeText(getApplicationContext(), "Sign in Complete", Toast.LENGTH_SHORT).show();
@@ -123,6 +123,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 break;
             }
 
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        finish();
     }
 
     //GETTING DATA FROM EDITTEXT AND STORING THEM IN STRING
