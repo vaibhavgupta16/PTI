@@ -14,10 +14,6 @@ public class Parent_model {
         this.phone = phone;
     }
 
-    public Parent_model() {
-
-    }
-
     public String getFname() {
         return fname;
     }

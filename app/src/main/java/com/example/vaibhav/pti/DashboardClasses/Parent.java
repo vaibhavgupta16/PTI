@@ -1,10 +1,9 @@
 package com.example.vaibhav.pti.DashboardClasses;
 
 import android.app.ProgressDialog;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -63,7 +62,6 @@ public class Parent extends AppCompatActivity {
 
                         try {
                             JSONObject jobj = new JSONObject(response);
-                            String success = jobj.getString("result");
                             JSONArray jarr=jobj.getJSONArray("data");
                             for (int i=0;i<jarr.length();i++)
                             {

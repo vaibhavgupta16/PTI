@@ -1,6 +1,5 @@
 package com.example.vaibhav.pti.Adapters;
 
-import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,10 +15,9 @@ import java.util.ArrayList;
 
 public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHolder> {
 
-    private Parent parent;
-    ArrayList<Parent_model> arrayList=new ArrayList<Parent_model>();
+    private ArrayList<Parent_model> arrayList = new ArrayList<>();
     public ParentAdapter(Parent parent, ArrayList<Parent_model> arrayList) {
-        this.parent=parent;
+        Parent parent1 = parent;
         this.arrayList=arrayList;
     }
 
@@ -43,9 +41,10 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHold
         return arrayList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name,email,address,phone;
-        public MyViewHolder(View itemView) {
+
+        MyViewHolder(View itemView) {
             super(itemView);
             name=itemView.findViewById(R.id.par_name);
             email=itemView.findViewById(R.id.par_email);

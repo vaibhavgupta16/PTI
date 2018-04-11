@@ -3,12 +3,11 @@ package com.example.vaibhav.pti;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.View;
-
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -20,13 +19,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.vaibhav.pti.ModelClasses.Parent_model;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import java.util.ArrayList;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     public static final String MY_PREFS ="My Prefrences" ;
@@ -35,8 +31,6 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     TextView textView_forgot;
     RequestQueue queue;
     String TAG="courserequest", tdemail,tdpassword,name,email,regid;
-    Parent_model p;
-    ArrayList<Parent_model> arrayList= new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

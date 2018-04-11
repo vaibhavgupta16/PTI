@@ -1,6 +1,7 @@
 package com.example.vaibhav.pti.Adapters;
 
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.CardView;
@@ -35,7 +36,7 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
 
     @Override
-    public void onBindViewHolder(HomeAdapter.MyViewHolder holder, final int position) {
+    public void onBindViewHolder(HomeAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") final int position) {
 
         holder.imageView.setImageResource(image[position]);
         holder.textView.setText(title[position]);
@@ -69,11 +70,12 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
         return image.length;
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         ImageView imageView;
         TextView textView;
         CardView cardView;
-        public MyViewHolder(View itemView) {
+
+        MyViewHolder(View itemView) {
             super(itemView);
             imageView=itemView.findViewById(R.id.imageview);
             textView=itemView.findViewById(R.id.textview);
