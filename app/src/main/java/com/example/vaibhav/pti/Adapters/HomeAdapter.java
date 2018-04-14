@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.vaibhav.pti.DashboardClasses.Attendance;
 import com.example.vaibhav.pti.DashboardClasses.Parent;
 import com.example.vaibhav.pti.R;
 
@@ -44,6 +45,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
             @Override
             public void onClick(View v) {
                 if(position==0){
+                    Intent intent = new Intent(activity, Attendance.class);
+                    activity.startActivity(intent);
 
                 }
                 else if(position==1){
