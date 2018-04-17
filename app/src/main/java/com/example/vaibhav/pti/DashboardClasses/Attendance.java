@@ -17,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.vaibhav.pti.Adapters.AttendanceAdapter;
 import com.example.vaibhav.pti.ModelClasses.Attendance_model;
+import com.example.vaibhav.pti.ModelClasses.URLSettup;
 import com.example.vaibhav.pti.R;
 
 import org.json.JSONArray;
@@ -47,7 +48,7 @@ public class Attendance extends AppCompatActivity {
 
         recyclerView = findViewById(R.id.atterecy);
         queue = Volley.newRequestQueue(this);
-        String url = "http://parportal.000webhostapp.com/login.php?act=Attendance_Details&stu_reg_id=" + sturegid;
+        String url = URLSettup.url + "act=Attendance_Details&stu_reg_id=" + sturegid;
         final ProgressDialog pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.show();

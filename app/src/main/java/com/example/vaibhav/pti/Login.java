@@ -19,13 +19,17 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
+import com.example.vaibhav.pti.ModelClasses.URLSettup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+
 public class Login extends AppCompatActivity implements View.OnClickListener {
     public static final String MY_PREFS ="My Prefrences" ;
+    static ArrayList<String> sregid = new ArrayList<String>();
     Button button_login;
     EditText editText_password,editText_email;
     TextView textView_forgot;
@@ -54,7 +58,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
             case R.id.login:
                 if(validations()){
                     queue = Volley.newRequestQueue(this);
-                    String url = "http://parportal.000webhostapp.com/login.php?act=Parent_Login&email="+tdemail+"&password="+tdpassword;
+                    String url = URLSettup.url + "act=Parent_Login&email=" + tdemail + "&password=" + tdpassword;
                     final ProgressDialog pDialog = new ProgressDialog(this);
                     pDialog.setMessage("Loading...");
                     pDialog.show();
@@ -79,6 +83,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                             name=jobj1.getString("first_name");
                                             email=jobj1.getString("email");
                                             regid=jobj1.getString("stu_reg_id");
+                                            sregid.add(regid);
                                         }
                                         if (success.equals("Login Successfull")) {
                                             SharedPreferences.Editor editor= getSharedPreferences(MY_PREFS,MODE_PRIVATE).edit();
@@ -122,6 +127,12 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
     @Override
     protected void onPause() {
         super.onPause();
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
         finish();
     }
 

@@ -1,12 +1,12 @@
 package com.example.vaibhav.pti.Adapters;
 
+import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.vaibhav.pti.DashboardClasses.Parent;
 import com.example.vaibhav.pti.ModelClasses.Parent_model;
 import com.example.vaibhav.pti.R;
 
@@ -15,9 +15,11 @@ import java.util.ArrayList;
 
 public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHolder> {
 
+    private FragmentActivity activity;
     private ArrayList<Parent_model> arrayList = new ArrayList<>();
-    public ParentAdapter(Parent parent, ArrayList<Parent_model> arrayList) {
-        Parent parent1 = parent;
+
+    public ParentAdapter(FragmentActivity activity, ArrayList<Parent_model> arrayList) {
+        this.activity = activity;
         this.arrayList=arrayList;
     }
 

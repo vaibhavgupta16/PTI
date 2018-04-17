@@ -38,7 +38,7 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
         String d = date.toString();
         holder.txtname.setText(arrayList.get(position).getName());
         holder.txtatt.setText(arrayList.get(position).getAtt());
-        holder.txtdate.setText(d);
+        holder.txtdate.setText("Date:" + d);
 
     }
 

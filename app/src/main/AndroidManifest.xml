@@ -2,7 +2,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.vaibhav.pti">
 
-    <!-- To auto-complete the email text field in the login form with the user's emails -->
     <uses-permission android:name="android.permission.GET_ACCOUNTS" />
     <uses-permission android:name="android.permission.READ_PROFILE" />
     <uses-permission android:name="android.permission.READ_CONTACTS" />
@@ -28,15 +27,15 @@
             android:name=".Login"
             android:label="@string/action_sign_in" />
         <activity
-            android:name=".Registration"
-            android:label="Registration" />
-        <activity
             android:name=".Home"
             android:label="@string/title_activity_home"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Nav" />
-        <activity android:name=".DashboardClasses.Parent" />
-        <activity android:name=".DashboardClasses.Attendance"></activity>
+        <activity
+            android:name=".DashboardClasses.Attendance"
+            android:label="@string/attendance" />
+        <activity
+            android:name=".DashboardClasses.Teacher"
+            android:label="@string/teachers" />
     </application>
 
 </manifest>
