@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:layout_marginLeft="8dp"
+    android:layout_marginRight="8dp"
+    android:layout_marginTop="8dp">
+
+    <TableRow
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:id="@+id/txtid"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_column="1"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:text="teacherid"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/txtname"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txtid"
+            android:layout_alignBottom="@+id/txtid"
+            android:layout_column="2"
+            android:layout_marginLeft="17dp"
+            android:layout_marginStart="17dp"
+            android:layout_toEndOf="@+id/txtid"
+            android:layout_toRightOf="@+id/txtid"
+            android:layout_weight="1"
+            android:text="teachername"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/txtsub"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignBaseline="@+id/txtname"
+            android:layout_alignBottom="@+id/txtname"
+            android:layout_column="3"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_toEndOf="@+id/txtname"
+            android:layout_toRightOf="@+id/txtname"
+            android:layout_weight="1"
+            android:text="subject"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat"
+            android:textSize="17sp" />
+
+        <TextView
+            android:id="@+id/btnview"
+            style="@style/Base.TextAppearance.AppCompat.Button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_above="@+id/view"
+            android:layout_column="4"
+            android:layout_toEndOf="@+id/txtsub"
+            android:layout_toRightOf="@+id/txtsub"
+            android:layout_weight="1"
+
+            android:text="View "
+            android:textColor="@color/blue"
+            android:textSize="16sp"
+            android:textStyle="bold" />
+
+    </TableRow>
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtid"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/black" />
+
+
+</TableLayout>
