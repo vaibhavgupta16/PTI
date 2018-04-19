@@ -36,6 +36,9 @@
         <activity
             android:name=".DashboardClasses.Teacher"
             android:label="@string/teachers" />
+        <activity
+            android:name=".forgot"
+            android:label="@string/forgot" />
     </application>
 
 </manifest>

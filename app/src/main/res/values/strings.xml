@@ -34,4 +34,14 @@
     <string name="set_date">set date</string>
     <string name="attendance">Attendance</string>
     <string name="teachers">Teacher Details</string>
+    <string name="id">ID</string>
+    <string name="name">NAME</string>
+    <string name="subject">SUBJECT</string>
+    <string name="logo">Logo</string>
+    <string name="images">images</string>
+    <string name="address">Address</string>
+    <string name="edit">Edit</string>
+    <string name="view">View</string>
+    <string name="ok">OK</string>
+    <string name="forgot">Forgot Password</string>
 </resources>

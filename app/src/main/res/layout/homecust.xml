@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardview"
     style="@style/Base.CardView"
     android:layout_width="140dp"
@@ -9,19 +10,20 @@
     android:layout_marginLeft="16dp"
     android:layout_marginRight="16dp"
     android:layout_marginTop="16dp"
-    android:clickable="true">
+    android:clickable="true"
+    android:focusable="true">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        tools:ignore="UseCompoundDrawables">
 
         <ImageView
             android:id="@+id/imageview"
             android:layout_width="match_parent"
             android:layout_height="145dp"
-            android:contentDescription="images"
-            />
+            android:contentDescription="@string/images" />
 
         <TextView
             android:id="@+id/textview"

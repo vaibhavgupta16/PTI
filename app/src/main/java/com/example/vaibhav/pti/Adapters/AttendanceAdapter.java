@@ -10,12 +10,9 @@ import com.example.vaibhav.pti.DashboardClasses.Attendance;
 import com.example.vaibhav.pti.ModelClasses.Attendance_model;
 import com.example.vaibhav.pti.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
-
-/**
- * Created by Vaibhav on 13-Apr-18.
- */
 
 public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.MyViewHolder> {
     ArrayList<Attendance_model> arrayList = new ArrayList<>();
@@ -35,10 +32,10 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
 
     @Override
     public void onBindViewHolder(AttendanceAdapter.MyViewHolder holder, int position) {
-        String d = date.toString();
+        SimpleDateFormat ft = new SimpleDateFormat("E dd/MM/yyyy");
         holder.txtname.setText(arrayList.get(position).getName());
         holder.txtatt.setText(arrayList.get(position).getAtt());
-        holder.txtdate.setText("Date:" + d);
+        holder.txtdate.setText("Date: " + ft.format(date));
 
     }
 

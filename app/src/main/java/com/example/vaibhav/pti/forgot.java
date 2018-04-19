@@ -1,13 +1,12 @@
-package com.example.vaibhav.pti.Dialog;
+package com.example.vaibhav.pti;
 
-
-import android.app.Dialog;
 import android.app.ProgressDialog;
-import android.content.Context;
+import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.TextView;
+import android.widget.EditText;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -15,42 +14,36 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.vaibhav.pti.R;
+import com.example.vaibhav.pti.ModelClasses.URLSettup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import static com.android.volley.VolleyLog.TAG;
-
-public class viewteacher {
+public class forgot extends AppCompatActivity implements View.OnClickListener {
+    EditText email;
+    Button submit;
     RequestQueue queue;
-    TextView name, contact, email;
-    Button ok;
-    Dialog dialog;
+    String TAG = "courserequest";
 
-    public viewteacher(Context context, String tid) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_forgot);
 
-        dialog = new Dialog(context);
-        dialog.setTitle("Teacher Details");
-        dialog.setCancelable(false);
-        dialog.setContentView(R.layout.viewteacherdetail);
+        email = findViewById(R.id.editfor);
+        submit = findViewById(R.id.btnsubmit);
 
-        name = dialog.findViewById(R.id.tname);
-        contact = dialog.findViewById(R.id.tcontact);
-        email = dialog.findViewById(R.id.temail);
-        ok = dialog.findViewById(R.id.dialog_close);
-        ok.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialog.dismiss();
-            }
-        });
+        submit.setOnClickListener(this);
 
+    }
 
-        queue = Volley.newRequestQueue(context);
-        String url = "http://parportal.000webhostapp.com/login.php?act=Teacher_Data&Teacher_Id=" + tid;
-        final ProgressDialog pDialog = new ProgressDialog(context);
+    @Override
+    public void onClick(View v) {
+        String s = email.getText().toString().trim();
+        queue = Volley.newRequestQueue(this);
+        String url = URLSettup.url + "act=Forgot_Password&email=" + s;
+        final ProgressDialog pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.show();
 
@@ -66,12 +59,14 @@ public class viewteacher {
 
                         try {
                             JSONObject jobj = new JSONObject(response);
+                            String success = jobj.getString("result");
                             JSONArray jarr = jobj.getJSONArray("data");
                             for (int i = 0; i < jarr.length(); i++) {
                                 JSONObject jobj1 = jarr.getJSONObject(i);
-                                name.setText(jobj1.getString("first_name"));
-                                contact.setText(jobj1.getString("contact"));
-                                email.setText(jobj1.getString("email"));
+                                String pass = jobj1.getString("password");
+                                Log.e("password", "" + pass);
+                                txt.setText(Html.fromHtml("<a href=\"mailto:sipika@btes.co.in\">Send Feedback</a>"));
+                                txt.setMovementMethod(LinkMovementMethod.getInstance());
                             }
                         } catch (JSONException e) {
                             e.printStackTrace();
@@ -82,7 +77,6 @@ public class viewteacher {
             public void onErrorResponse(VolleyError error) {
                 Log.e("===error==", "==" + error);
                 pDialog.dismiss();
-
             }
         });
         stringRequest.setTag(TAG);
@@ -90,7 +84,5 @@ public class viewteacher {
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
 
-        dialog.show();
     }
-
 }

@@ -25,11 +25,12 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Login extends AppCompatActivity implements View.OnClickListener {
     public static final String MY_PREFS ="My Prefrences" ;
-    static ArrayList<String> sregid = new ArrayList<String>();
+    static Set<String> sregid = new HashSet<String>();
     Button button_login;
     EditText editText_password,editText_email;
     TextView textView_forgot;
@@ -44,10 +45,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
         button_login=findViewById(R.id.login);
         
         editText_password=findViewById(R.id.password);
-        editText_email=findViewById(R.id.phone);
+        editText_email = findViewById(R.id.email);
         textView_forgot=findViewById(R.id.forgot_password);
 
         button_login.setOnClickListener(this);
+        textView_forgot.setOnClickListener(this);
         
     }
 
@@ -90,7 +92,8 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                                             editor.putBoolean("loginkey",true);
                                             editor.putString("Name",name);
                                             editor.putString("email",email);
-                                            editor.putString("Sturegid",regid);
+                                            // editor.putString("Sturegid",regid);
+                                            editor.putStringSet("regid", sregid);
                                             editor.commit();
                                             Intent intent = new Intent(Login.this,Home.class);
                                             startActivity(intent);
@@ -119,6 +122,11 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 else {
                      Toast.makeText(getApplicationContext(),"Something Went Wrong",Toast.LENGTH_LONG).show();
                 }
+                break;
+
+            case R.id.forgot_password:
+                Intent intent = new Intent(Login.this, forgot.class);
+                startActivity(intent);
                 break;
             }
 

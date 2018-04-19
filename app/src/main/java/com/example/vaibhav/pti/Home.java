@@ -23,16 +23,22 @@ import android.widget.Toast;
 import com.example.vaibhav.pti.Fragments.Dashboard;
 import com.example.vaibhav.pti.Fragments.parentprofile;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Set;
+
 import static com.example.vaibhav.pti.Login.MY_PREFS;
-import static com.example.vaibhav.pti.Login.sregid;
 
 public class Home extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, AdapterView.OnItemSelectedListener {
+
     private static long back_pressed;
     SharedPreferences sharedPreferences;
     TextView name,email;
     Toolbar toolbar;
     Spinner spinner;
+    Set<String> sregid = new HashSet<String>();
+    ArrayList<String> arr = new ArrayList<String>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,11 +56,14 @@ public class Home extends AppCompatActivity
         String n=sharedPreferences.getString("Name",null);
         String e=sharedPreferences.getString("email",null);
 
+        sregid = sharedPreferences.getStringSet("regid", null);
+        arr.addAll(sregid);
         name.setText(n);
         email.setText(e);
-        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, sregid);
+        ArrayAdapter<String> arrayAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, arr);
         arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(arrayAdapter);
+        spinner.setOnItemSelectedListener(this);
 
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -160,6 +169,10 @@ public class Home extends AppCompatActivity
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
+        String Sturegid = parent.getItemAtPosition(position).toString();
+        editor.putString("Sturegid", Sturegid);
+        editor.commit();
 
     }
 

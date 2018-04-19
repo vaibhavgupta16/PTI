@@ -5,7 +5,7 @@
 
     <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="vertical"
         android:paddingBottom="16dp"
         android:paddingLeft="16dp"
@@ -61,7 +61,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="Address"
+            android:text="@string/address"
             android:textAppearance="@style/Base.TextAppearance.AppCompat"
             android:textSize="18sp" />
 
@@ -101,7 +101,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="32dp"
-            android:text="Edit" />
+            android:text="@string/edit" />
 
     </LinearLayout>
 

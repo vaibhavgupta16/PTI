@@ -13,9 +13,6 @@ import com.example.vaibhav.pti.R;
 
 import java.util.ArrayList;
 
-/**
- * Created by Vaibhav on 16-Apr-18.
- */
 
 public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.MyViewHolder> {
     Teacher teacher;

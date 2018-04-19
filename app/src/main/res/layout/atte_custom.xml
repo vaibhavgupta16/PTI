@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_gravity="center_horizontal"
     android:layout_marginBottom="16dp"
     android:layout_marginEnd="16dp"
     android:layout_marginStart="16dp"
@@ -9,16 +10,26 @@
     android:orientation="vertical">
 
     <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="Today's Attendance"
+        android:textColor="@color/blue"
+        android:textSize="25sp"
+        android:textStyle="bold" />
+    <TextView
         android:id="@+id/txtdate"
         style="@style/Base.TextAppearance.AppCompat"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="16dp"
+        android:paddingTop="16dp"
         android:textSize="15sp" />
 
     <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingTop="16dp">
 
         <TextView
             android:id="@+id/txtname"
