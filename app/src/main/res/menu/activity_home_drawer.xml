@@ -14,7 +14,7 @@
             android:title="Gallery" />
         <item
             android:id="@+id/nav_profile"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_menu_profile"
             android:title="@string/profile" />
         <item
             android:id="@+id/nav_logout"
@@ -24,6 +24,11 @@
 
     <item android:title="Communicate">
         <menu>
+            <item
+                android:id="@+id/nav_help"
+                android:icon="@drawable/ic_menu_help"
+                android:title="@string/help" />
+
             <item
                 android:id="@+id/nav_share"
                 android:icon="@drawable/ic_menu_share"

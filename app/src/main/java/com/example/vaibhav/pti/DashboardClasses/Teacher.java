@@ -40,6 +40,7 @@ public class Teacher extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_teacher);
         recyclerView = findViewById(R.id.teacherrecy);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         sharedPreferences = getSharedPreferences(MY_PREFS, MODE_PRIVATE);
         sturegid = sharedPreferences.getString("Sturegid", null);
         queue = Volley.newRequestQueue(this);
@@ -129,6 +130,12 @@ public class Teacher extends AppCompatActivity {
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return super.onSupportNavigateUp();
     }
 }
 

@@ -6,6 +6,8 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.util.Log;
 import android.view.View;
+import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
 
@@ -32,7 +34,7 @@ public class viewteacher {
     public viewteacher(Context context, String tid) {
 
         dialog = new Dialog(context);
-        dialog.setTitle("Teacher Details");
+        //dialog.requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);
         dialog.setCancelable(false);
         dialog.setContentView(R.layout.viewteacherdetail);
 
@@ -91,6 +93,8 @@ public class viewteacher {
         queue.add(stringRequest);
 
         dialog.show();
+        Window window = dialog.getWindow();
+        window.setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     }
 
 }

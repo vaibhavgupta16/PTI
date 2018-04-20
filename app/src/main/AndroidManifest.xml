@@ -39,6 +39,9 @@
         <activity
             android:name=".forgot"
             android:label="@string/forgot" />
+        <activity
+            android:name=".DashboardClasses.Diary"
+            android:label="@string/notice" />
     </application>
 
 </manifest>

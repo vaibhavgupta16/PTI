@@ -13,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.vaibhav.pti.DashboardClasses.Attendance;
+import com.example.vaibhav.pti.DashboardClasses.Diary;
 import com.example.vaibhav.pti.DashboardClasses.Teacher;
 import com.example.vaibhav.pti.R;
 
@@ -50,6 +51,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
                 }
                 else if(position==1){
+                    Intent intent = new Intent(activity, Diary.class);
+                    activity.startActivity(intent);
 
                 }
                 else if(position==2){

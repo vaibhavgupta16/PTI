@@ -31,7 +31,7 @@
 
     <string name="logout">logout</string>
     <string name="share">Share</string>
-    <string name="set_date">set date</string>
+    <string name="date">Date</string>
     <string name="attendance">Attendance</string>
     <string name="teachers">Teacher Details</string>
     <string name="id">ID</string>
@@ -44,4 +44,6 @@
     <string name="view">View</string>
     <string name="ok">OK</string>
     <string name="forgot">Forgot Password</string>
+    <string name="notice">Notice</string>
+    <string name="help">Help</string>
 </resources>

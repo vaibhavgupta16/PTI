@@ -47,6 +47,7 @@ public class Attendance extends AppCompatActivity {
         String sturegid = sharedPreferences.getString("Sturegid", null);
 
         recyclerView = findViewById(R.id.atterecy);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         queue = Volley.newRequestQueue(this);
         String url = URLSettup.url + "act=Attendance_Details&stu_reg_id=" + sturegid;
         final ProgressDialog pDialog = new ProgressDialog(this);
@@ -99,5 +100,11 @@ public class Attendance extends AppCompatActivity {
 
     }
 
+    @Override
+    public boolean onSupportNavigateUp() {
+        finish();
+        return true;
 
+
+    }
 }

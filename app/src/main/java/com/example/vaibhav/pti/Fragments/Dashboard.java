@@ -14,8 +14,8 @@ import com.example.vaibhav.pti.R;
 
 public class Dashboard extends Fragment {
     RecyclerView recyclerView;
-    String title[] = {"Attendance", "Daily Dairy", "Progress Graph", "Teacher Details", "Online Chat"};
-    int image[] = {R.drawable.logo,R.drawable.diary, R.drawable.logo, R.drawable.logo, R.drawable.chathome};
+    String title[] = {"Attendance", "Notices", "Progress Graph", "Teacher Details", "Online Chat"};
+    int image[] = {R.drawable.attendance, R.drawable.notice, R.drawable.graph, R.drawable.teachers, R.drawable.chathome};
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

@@ -75,7 +75,8 @@ public class parentprofile extends Fragment {
                                 String phone = jobj1.getString("phone_no");
                                 String address = jobj1.getString("address");
                                 String email = jobj1.getString("email");
-                                p = new Parent_model(name, address, email, phone);
+                                String image = jobj1.getString("image");
+                                p = new Parent_model(name, address, email, phone, image);
                                 arrayList.add(p);
                             }
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
