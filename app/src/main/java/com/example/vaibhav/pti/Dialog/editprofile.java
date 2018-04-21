@@ -14,13 +14,13 @@ import com.android.volley.RequestQueue;
 import com.example.vaibhav.pti.R;
 
 public class editprofile implements View.OnClickListener {
-    EditText editname, editemail, editaddress, editphone;
-    Button btnok;
-    TextView x;
-    Dialog dialog;
     RequestQueue queue;
     String TAG = "courserequest";
     Context context;
+    private EditText editname, editemail, editaddress, editphone;
+    private Button btnok;
+    private TextView x;
+    private Dialog dialog;
 
     public editprofile(Context context, String name, String email, String Address, String Phone) {
         this.context = context;

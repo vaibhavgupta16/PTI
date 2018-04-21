@@ -16,7 +16,7 @@
         android:layout_marginTop="8dp"
         android:background="@drawable/circlebackground"
         android:gravity="center"
-        android:text="X"
+        android:text="@string/x"
         android:textColor="@color/blue"
         android:textStyle="bold" />
 
@@ -105,7 +105,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="center"
         android:layout_marginTop="32dp"
-        android:paddingRight="8dp"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
         android:text="@string/ok" />
 
 

@@ -7,7 +7,7 @@
     android:layout_marginRight="16dp"
     android:layout_marginTop="16dp"
     android:background="@drawable/rectangularbackground"
-    android:backgroundTint="@color/colorPrimary">
+    android:backgroundTint="@color/colorPrimaryDark">
 
     <TableRow
         android:layout_width="fill_parent"
@@ -21,7 +21,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Name:"
+            android:text="@string/na"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -45,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Contact:"
+            android:text="@string/contact"
             android:textSize="16sp"
             android:textStyle="bold" />
 
@@ -69,7 +69,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
-            android:text="Email:"
+            android:text="@string/em"
             android:textSize="16sp"
             android:textStyle="bold" />
 

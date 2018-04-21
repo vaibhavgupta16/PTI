@@ -17,7 +17,7 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_marginTop="106dp"
-        android:hint="Enter email" />
+        android:hint="@string/enter_email" />
 
     <Button
         android:id="@+id/btnsubmit"
@@ -26,5 +26,5 @@
         android:layout_below="@+id/editfor"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="53dp"
-        android:text="Submit" />
+        android:text="@string/submit" />
 </RelativeLayout>

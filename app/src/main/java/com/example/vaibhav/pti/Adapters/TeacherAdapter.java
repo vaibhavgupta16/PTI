@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 
 public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.MyViewHolder> {
-    Teacher teacher;
-    ArrayList<Teacher_model> arrayList;
+    private Teacher teacher;
+    private ArrayList<Teacher_model> arrayList;
 
     public TeacherAdapter(Teacher teacher, ArrayList<Teacher_model> arrayList) {
         this.arrayList = arrayList;
@@ -49,10 +49,10 @@ public class TeacherAdapter extends RecyclerView.Adapter<TeacherAdapter.MyViewHo
         return arrayList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         TextView name, id, sub, edit;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView) {
             super(itemView);
             name = itemView.findViewById(R.id.txtname);
             id = itemView.findViewById(R.id.txtid);

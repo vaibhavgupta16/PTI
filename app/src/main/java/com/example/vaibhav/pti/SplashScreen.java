@@ -2,9 +2,9 @@ package com.example.vaibhav.pti;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 
 import static com.example.vaibhav.pti.Login.MY_PREFS;
 
@@ -27,7 +27,7 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-            }, 3000);
+            }, 2500);
         }
         else{
             new Handler().postDelayed(new Runnable() {
@@ -37,7 +37,7 @@ public class SplashScreen extends AppCompatActivity {
                     startActivity(i);
                     finish();
                 }
-            },3000);
+            }, 2500);
         }
     }
 }

@@ -14,8 +14,8 @@ import java.util.ArrayList;
 
 
 public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder> {
-    ArrayList<Diary_model> arrayList;
-    Diary diary;
+    private ArrayList<Diary_model> arrayList;
+    private Diary diary;
 
     public DiaryAdapter(Diary diary, ArrayList<Diary_model> arrayList) {
         this.arrayList = arrayList;
@@ -30,8 +30,8 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
 
     @Override
     public void onBindViewHolder(DiaryAdapter.MyViewHolder holder, int position) {
-        holder.class_name.setText("Class:" + " " + arrayList.get(position).getClass_name());
-        holder.date.setText("Date:" + " " + arrayList.get(position).getDate());
+        holder.class_name.setText(String.format("Class: %s", arrayList.get(position).getClass_name()));
+        holder.date.setText(String.format("Date: %s", arrayList.get(position).getDate()));
         holder.notice.setText(arrayList.get(position).getNotice());
 
     }
@@ -41,10 +41,10 @@ public class DiaryAdapter extends RecyclerView.Adapter<DiaryAdapter.MyViewHolder
         return arrayList.size();
     }
 
-    public class MyViewHolder extends RecyclerView.ViewHolder {
+    class MyViewHolder extends RecyclerView.ViewHolder {
         TextView date, class_name, notice;
 
-        public MyViewHolder(View itemView) {
+        MyViewHolder(View itemView) {
             super(itemView);
             date = itemView.findViewById(R.id.textView2);
             class_name = itemView.findViewById(R.id.cn);

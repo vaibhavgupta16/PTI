@@ -1,8 +1,5 @@
 package com.example.vaibhav.pti.ModelClasses;
 
-/**
- * Created by Vaibhav on 19-Apr-18.
- */
 
 public class Diary_model {
     private String class_name;

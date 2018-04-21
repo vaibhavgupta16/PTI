@@ -30,7 +30,7 @@ public class Diary extends AppCompatActivity {
     String TAG = "courserequest";
     RequestQueue queue;
     RecyclerView recylerView;
-    ArrayList<Diary_model> arrayList = new ArrayList();
+    ArrayList<Diary_model> arrayList = new ArrayList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

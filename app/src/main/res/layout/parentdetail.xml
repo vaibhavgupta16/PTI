@@ -17,6 +17,7 @@
             android:layout_width="160dp"
             android:layout_height="160dp"
             android:layout_gravity="center"
+            android:contentDescription="@string/profile"
             android:src="@drawable/man" />
 
         <TextView

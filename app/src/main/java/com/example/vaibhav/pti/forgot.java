@@ -1,12 +1,15 @@
 package com.example.vaibhav.pti;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -40,7 +43,7 @@ public class forgot extends AppCompatActivity implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        String s = email.getText().toString().trim();
+        final String s = email.getText().toString().trim();
         queue = Volley.newRequestQueue(this);
         String url = URLSettup.url + "act=Forgot_Password&email=" + s;
         final ProgressDialog pDialog = new ProgressDialog(this);
@@ -59,12 +62,13 @@ public class forgot extends AppCompatActivity implements View.OnClickListener {
 
                         try {
                             JSONObject jobj = new JSONObject(response);
-                            String success = jobj.getString("result");
+                            //String success = jobj.getString("result");
                             JSONArray jarr = jobj.getJSONArray("data");
                             for (int i = 0; i < jarr.length(); i++) {
                                 JSONObject jobj1 = jarr.getJSONObject(i);
                                 String pass = jobj1.getString("password");
                                 Log.e("password", "" + pass);
+                                email(s, "Password", "Hello Your password is:" + pass);
                                 //txt.setText(Html.fromHtml("<a href=\"mailto:sipika@btes.co.in\">Send Feedback</a>"));
                                 //txt.setMovementMethod(LinkMovementMethod.getInstance());
                             }
@@ -83,6 +87,18 @@ public class forgot extends AppCompatActivity implements View.OnClickListener {
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
+
+    }
+
+    public void email(String email, String subject, String message) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.setType("message/rfc822");
+        startActivity(Intent.createChooser(intent, "Email"));
+        Toast.makeText(getApplicationContext(), "Password has been sent to email Id provided", Toast.LENGTH_SHORT).show();
 
     }
 }

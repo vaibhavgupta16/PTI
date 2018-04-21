@@ -25,7 +25,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 import static com.example.vaibhav.pti.Login.MY_PREFS;
 
@@ -34,7 +33,6 @@ public class Attendance extends AppCompatActivity {
     RequestQueue queue;
     String TAG = "courserequest";
     SharedPreferences sharedPreferences;
-    Date date;
     Attendance_model attendance;
     ArrayList<Attendance_model> arrayList = new ArrayList<>();
     private String name, attd, cl;
@@ -63,27 +61,41 @@ public class Attendance extends AppCompatActivity {
                     public void onResponse(String response) {
                         Log.e("===response==", "==" + response);
                         pDialog.dismiss();
-
-                        try {
-                            JSONObject jobj = new JSONObject(response);
-                            JSONArray jarr = jobj.getJSONArray("data");
-                            for (int i = 0; i < jarr.length(); i++) {
-                                JSONObject jobj1 = jarr.getJSONObject(i);
-                                name = jobj1.getString("Name");
-                                attd = jobj1.getString("Date");
-                                cl = jobj1.getString("Class");
-                                attendance = new Attendance_model(attd, name, cl);
+                        SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS, MODE_PRIVATE).edit();
+                        editor.putString("response", response);
+                        editor.commit();
+                        if (response.equalsIgnoreCase("{\"result\":\"Failed!\"}")) {
+                            try {
+                                JSONObject jobj = new JSONObject(response);
+                                String result = jobj.getString("result");
+                                attendance = new Attendance_model(result);
                                 arrayList.add(attendance);
-
+                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Attendance.this);
+                                recyclerView.setLayoutManager(layoutManager);
+                                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                                recyclerView.setAdapter(new AttendanceAdapter(Attendance.this, arrayList));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
                             }
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Attendance.this);
-                            recyclerView.setLayoutManager(layoutManager);
-                            recyclerView.setItemAnimator(new DefaultItemAnimator());
-                            recyclerView.setAdapter(new AttendanceAdapter(Attendance.this, arrayList));
-
-
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                        } else {
+                            try {
+                                JSONObject jobj = new JSONObject(response);
+                                JSONArray jarr = jobj.getJSONArray("data");
+                                for (int i = 0; i < jarr.length(); i++) {
+                                    JSONObject jobj1 = jarr.getJSONObject(i);
+                                    name = jobj1.getString("Name");
+                                    attd = jobj1.getString("Date");
+                                    cl = jobj1.getString("Class");
+                                    attendance = new Attendance_model(attd, name, cl);
+                                    arrayList.add(attendance);
+                                }
+                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Attendance.this);
+                                recyclerView.setLayoutManager(layoutManager);
+                                recyclerView.setItemAnimator(new DefaultItemAnimator());
+                                recyclerView.setAdapter(new AttendanceAdapter(Attendance.this, arrayList));
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }, new Response.ErrorListener() {
@@ -97,14 +109,11 @@ public class Attendance extends AppCompatActivity {
 
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
-
     }
 
     @Override
     public boolean onSupportNavigateUp() {
         finish();
         return true;
-
-
     }
 }

@@ -63,9 +63,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
                     activity.startActivity(intent);
 
                 }
-                else if(position==4){
-
-                }
             }
         });
 
