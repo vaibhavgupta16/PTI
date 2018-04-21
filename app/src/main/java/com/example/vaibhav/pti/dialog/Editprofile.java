@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.Dialog;
+package com.example.vaibhav.pti.dialog;
 
 
 import android.app.Dialog;
@@ -13,7 +13,7 @@ import android.widget.TextView;
 import com.android.volley.RequestQueue;
 import com.example.vaibhav.pti.R;
 
-public class editprofile implements View.OnClickListener {
+public class Editprofile implements View.OnClickListener {
     RequestQueue queue;
     String TAG = "courserequest";
     Context context;
@@ -22,7 +22,7 @@ public class editprofile implements View.OnClickListener {
     private TextView x;
     private Dialog dialog;
 
-    public editprofile(Context context, String name, String email, String Address, String Phone) {
+    public Editprofile(Context context, String name, String email, String Address, String Phone) {
         this.context = context;
         dialog = new Dialog(context);
         dialog.setContentView(R.layout.editprofile);

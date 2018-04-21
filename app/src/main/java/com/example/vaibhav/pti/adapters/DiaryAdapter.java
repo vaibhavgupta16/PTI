@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.Adapters;
+package com.example.vaibhav.pti.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -6,9 +6,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.example.vaibhav.pti.DashboardClasses.Diary;
-import com.example.vaibhav.pti.ModelClasses.Diary_model;
 import com.example.vaibhav.pti.R;
+import com.example.vaibhav.pti.dashboardClasses.Diary;
+import com.example.vaibhav.pti.modelClasses.Diary_model;
 
 import java.util.ArrayList;
 

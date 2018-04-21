@@ -21,8 +21,8 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.vaibhav.pti.Fragments.Dashboard;
-import com.example.vaibhav.pti.Fragments.parentprofile;
+import com.example.vaibhav.pti.fragments.Dashboard;
+import com.example.vaibhav.pti.fragments.Parentprofile;
 
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -140,7 +140,7 @@ public class Home extends AppCompatActivity
 
         } else if (id == R.id.nav_profile) {
             toolbar.setTitle("My Profile");
-            parentprofile parentprofile = new parentprofile();
+            Parentprofile parentprofile = new Parentprofile();
             android.support.v4.app.FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
             fragmentTransaction.replace(R.id.frame, parentprofile);
             fragmentTransaction.commit();

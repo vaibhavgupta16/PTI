@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.Adapters;
+package com.example.vaibhav.pti.adapters;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -10,9 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.vaibhav.pti.DashboardClasses.Attendance;
-import com.example.vaibhav.pti.ModelClasses.Attendance_model;
 import com.example.vaibhav.pti.R;
+import com.example.vaibhav.pti.dashboardClasses.Attendance;
+import com.example.vaibhav.pti.modelClasses.Attendance_model;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

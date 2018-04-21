@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.DashboardClasses;
+package com.example.vaibhav.pti.dashboardClasses;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -15,10 +15,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.vaibhav.pti.Adapters.AttendanceAdapter;
-import com.example.vaibhav.pti.ModelClasses.Attendance_model;
-import com.example.vaibhav.pti.ModelClasses.URLSettup;
 import com.example.vaibhav.pti.R;
+import com.example.vaibhav.pti.adapters.AttendanceAdapter;
+import com.example.vaibhav.pti.modelClasses.Attendance_model;
+import com.example.vaibhav.pti.modelClasses.URLSettup;
 
 import org.json.JSONArray;
 import org.json.JSONException;

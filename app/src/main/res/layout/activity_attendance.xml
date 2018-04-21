@@ -7,7 +7,7 @@
     android:layout_marginLeft="16dp"
     android:layout_marginStart="8dp"
     android:layout_marginTop="16dp"
-    tools:context="com.example.vaibhav.pti.DashboardClasses.Attendance">
+    tools:context="com.example.vaibhav.pti.dashboardClasses.Attendance">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/atterecy"

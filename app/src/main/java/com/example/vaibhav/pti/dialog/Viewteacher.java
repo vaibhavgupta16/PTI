@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.Dialog;
+package com.example.vaibhav.pti.dialog;
 
 
 import android.app.Dialog;
@@ -25,13 +25,13 @@ import org.json.JSONObject;
 
 import static com.android.volley.VolleyLog.TAG;
 
-public class viewteacher {
+public class Viewteacher {
     RequestQueue queue;
     TextView name, contact, email;
     Button ok;
     Dialog dialog;
 
-    public viewteacher(Context context, String tid) {
+    public Viewteacher(Context context, String tid) {
 
         dialog = new Dialog(context);
         //dialog.requestWindowFeature(Window.FEATURE_CUSTOM_TITLE);

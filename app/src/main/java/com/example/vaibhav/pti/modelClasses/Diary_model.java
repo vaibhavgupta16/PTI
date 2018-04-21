@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.ModelClasses;
+package com.example.vaibhav.pti.modelClasses;
 
 
 public class Diary_model {

@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.Adapters;
+package com.example.vaibhav.pti.adapters;
 
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.RecyclerView;
@@ -9,9 +9,9 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.vaibhav.pti.Dialog.editprofile;
-import com.example.vaibhav.pti.ModelClasses.Parent_model;
 import com.example.vaibhav.pti.R;
+import com.example.vaibhav.pti.dialog.Editprofile;
+import com.example.vaibhav.pti.modelClasses.Parent_model;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -47,7 +47,7 @@ public class ParentAdapter extends RecyclerView.Adapter<ParentAdapter.MyViewHold
                 String a = holder.address.getText().toString();
                 String e = holder.email.getText().toString();
                 String p = holder.phone.getText().toString();
-                new editprofile(activity, n, e, a, p);
+                new Editprofile(activity, n, e, a, p);
             }
         });
 

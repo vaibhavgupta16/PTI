@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.Fragments;
+package com.example.vaibhav.pti.fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,8 +9,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.vaibhav.pti.Adapters.HomeAdapter;
 import com.example.vaibhav.pti.R;
+import com.example.vaibhav.pti.adapters.HomeAdapter;
 
 public class Dashboard extends Fragment {
     RecyclerView recyclerView;

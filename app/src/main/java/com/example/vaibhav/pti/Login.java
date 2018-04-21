@@ -19,7 +19,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.vaibhav.pti.ModelClasses.URLSettup;
+import com.example.vaibhav.pti.modelClasses.URLSettup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -125,7 +125,7 @@ public class Login extends AppCompatActivity implements View.OnClickListener {
                 break;
 
             case R.id.forgot_password:
-                Intent intent = new Intent(Login.this, forgot.class);
+                Intent intent = new Intent(Login.this, Forgot.class);
                 startActivity(intent);
                 break;
             }

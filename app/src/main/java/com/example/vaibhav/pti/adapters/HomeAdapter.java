@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.Adapters;
+package com.example.vaibhav.pti.adapters;
 
 
 import android.annotation.SuppressLint;
@@ -12,10 +12,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.vaibhav.pti.DashboardClasses.Attendance;
-import com.example.vaibhav.pti.DashboardClasses.Diary;
-import com.example.vaibhav.pti.DashboardClasses.Teacher;
 import com.example.vaibhav.pti.R;
+import com.example.vaibhav.pti.dashboardClasses.Attendance;
+import com.example.vaibhav.pti.dashboardClasses.Diary;
+import com.example.vaibhav.pti.dashboardClasses.Teacher;
 
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> {

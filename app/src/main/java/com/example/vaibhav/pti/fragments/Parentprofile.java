@@ -1,4 +1,4 @@
-package com.example.vaibhav.pti.Fragments;
+package com.example.vaibhav.pti.fragments;
 
 import android.app.ProgressDialog;
 import android.content.SharedPreferences;
@@ -18,10 +18,10 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.vaibhav.pti.Adapters.ParentAdapter;
-import com.example.vaibhav.pti.ModelClasses.Parent_model;
-import com.example.vaibhav.pti.ModelClasses.URLSettup;
 import com.example.vaibhav.pti.R;
+import com.example.vaibhav.pti.adapters.ParentAdapter;
+import com.example.vaibhav.pti.modelClasses.Parent_model;
+import com.example.vaibhav.pti.modelClasses.URLSettup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -33,7 +33,7 @@ import static android.content.Context.MODE_PRIVATE;
 import static com.example.vaibhav.pti.Login.MY_PREFS;
 
 
-public class parentprofile extends Fragment {
+public class Parentprofile extends Fragment {
 
     RecyclerView recyclerView;
     RequestQueue queue;

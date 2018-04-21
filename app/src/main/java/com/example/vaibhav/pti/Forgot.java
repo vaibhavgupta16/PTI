@@ -1,12 +1,15 @@
-package com.example.vaibhav.pti.DashboardClasses;
+package com.example.vaibhav.pti;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.android.volley.RequestQueue;
@@ -14,32 +17,35 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
-import com.example.vaibhav.pti.Adapters.DiaryAdapter;
-import com.example.vaibhav.pti.ModelClasses.Diary_model;
-import com.example.vaibhav.pti.ModelClasses.URLSettup;
-import com.example.vaibhav.pti.R;
+import com.example.vaibhav.pti.modelClasses.URLSettup;
 
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import java.util.ArrayList;
-
-public class Diary extends AppCompatActivity {
-    Diary_model diary;
-    String TAG = "courserequest";
+public class Forgot extends AppCompatActivity implements View.OnClickListener {
+    EditText email;
+    Button submit;
     RequestQueue queue;
-    RecyclerView recylerView;
-    ArrayList<Diary_model> arrayList = new ArrayList<>();
+    String TAG = "courserequest";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_diary);
-        recylerView = findViewById(R.id.diaryrecy);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        setContentView(R.layout.activity_forgot);
+
+        email = findViewById(R.id.editfor);
+        submit = findViewById(R.id.btnsubmit);
+
+        submit.setOnClickListener(this);
+
+    }
+
+    @Override
+    public void onClick(View v) {
+        final String s = email.getText().toString().trim();
         queue = Volley.newRequestQueue(this);
-        String url = URLSettup.url + "act=Notice";
+        String url = URLSettup.url + "act=Forgot_Password&email=" + s;
         final ProgressDialog pDialog = new ProgressDialog(this);
         pDialog.setMessage("Loading...");
         pDialog.show();
@@ -56,23 +62,16 @@ public class Diary extends AppCompatActivity {
 
                         try {
                             JSONObject jobj = new JSONObject(response);
+                            //String success = jobj.getString("result");
                             JSONArray jarr = jobj.getJSONArray("data");
-
                             for (int i = 0; i < jarr.length(); i++) {
                                 JSONObject jobj1 = jarr.getJSONObject(i);
-                                String notice = jobj1.getString("Notice");
-                                String date = jobj1.getString("Date");
-                                String cl = jobj1.getString("class_name");
-                                diary = new Diary_model(cl, notice, date);
-                                arrayList.add(diary);
-
+                                String pass = jobj1.getString("password");
+                                Log.e("password", "" + pass);
+                                email(s, "Password", "Hello Your password is:" + pass);
+                                //txt.setText(Html.fromHtml("<a href=\"mailto:sipika@btes.co.in\">Send Feedback</a>"));
+                                //txt.setMovementMethod(LinkMovementMethod.getInstance());
                             }
-                            RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Diary.this);
-                            recylerView.setLayoutManager(layoutManager);
-                            recylerView.setItemAnimator(new DefaultItemAnimator());
-                            recylerView.setAdapter(new DiaryAdapter(Diary.this, arrayList));
-
-
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -89,12 +88,17 @@ public class Diary extends AppCompatActivity {
         // Add the request to the RequestQueue.
         queue.add(stringRequest);
 
-
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        finish();
-        return super.onSupportNavigateUp();
+    public void email(String email, String subject, String message) {
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setData(Uri.parse("mailto:"));
+        intent.putExtra(Intent.EXTRA_EMAIL, email);
+        intent.putExtra(Intent.EXTRA_SUBJECT, subject);
+        intent.putExtra(Intent.EXTRA_TEXT, message);
+        intent.setType("message/rfc822");
+        startActivity(Intent.createChooser(intent, "Email"));
+        Toast.makeText(getApplicationContext(), "Password has been sent to email Id provided", Toast.LENGTH_SHORT).show();
+
     }
 }
