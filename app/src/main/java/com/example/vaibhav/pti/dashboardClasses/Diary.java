@@ -16,6 +16,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.vaibhav.pti.R;
 import com.example.vaibhav.pti.adapters.DiaryAdapter;
+import com.example.vaibhav.pti.adapters.ResultFailed;
 import com.example.vaibhav.pti.modelClasses.Diary_model;
 import com.example.vaibhav.pti.modelClasses.URLSettup;
 
@@ -54,27 +55,35 @@ public class Diary extends AppCompatActivity {
                         Log.e("===response==", "==" + response);
                         pDialog.dismiss();
 
-                        try {
-                            JSONObject jobj = new JSONObject(response);
-                            JSONArray jarr = jobj.getJSONArray("data");
-
-                            for (int i = 0; i < jarr.length(); i++) {
-                                JSONObject jobj1 = jarr.getJSONObject(i);
-                                String notice = jobj1.getString("Notice");
-                                String date = jobj1.getString("Date");
-                                String cl = jobj1.getString("class_name");
-                                diary = new Diary_model(cl, notice, date);
-                                arrayList.add(diary);
-
-                            }
+                        if (response.equals("{\"result\":\"Failed!\"}")) {
                             RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Diary.this);
                             recylerView.setLayoutManager(layoutManager);
                             recylerView.setItemAnimator(new DefaultItemAnimator());
-                            recylerView.setAdapter(new DiaryAdapter(Diary.this, arrayList));
+                            recylerView.setAdapter(new ResultFailed(R.drawable.nonotice, Diary.this));
+
+                        } else {
+                            try {
+                                JSONObject jobj = new JSONObject(response);
+                                JSONArray jarr = jobj.getJSONArray("data");
+
+                                for (int i = 0; i < jarr.length(); i++) {
+                                    JSONObject jobj1 = jarr.getJSONObject(i);
+                                    String notice = jobj1.getString("Notice");
+                                    String date = jobj1.getString("Date");
+                                    String cl = jobj1.getString("class_name");
+                                    diary = new Diary_model(cl, notice, date);
+                                    arrayList.add(diary);
+
+                                }
+                                RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Diary.this);
+                                recylerView.setLayoutManager(layoutManager);
+                                recylerView.setItemAnimator(new DefaultItemAnimator());
+                                recylerView.setAdapter(new DiaryAdapter(Diary.this, arrayList));
 
 
-                        } catch (JSONException e) {
-                            e.printStackTrace();
+                            } catch (JSONException e) {
+                                e.printStackTrace();
+                            }
                         }
                     }
                 }, new Response.ErrorListener() {

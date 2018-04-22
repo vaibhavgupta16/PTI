@@ -17,6 +17,7 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.example.vaibhav.pti.R;
 import com.example.vaibhav.pti.adapters.AttendanceAdapter;
+import com.example.vaibhav.pti.adapters.ResultFailed;
 import com.example.vaibhav.pti.modelClasses.Attendance_model;
 import com.example.vaibhav.pti.modelClasses.URLSettup;
 
@@ -65,18 +66,11 @@ public class Attendance extends AppCompatActivity {
                         editor.putString("response", response);
                         editor.commit();
                         if (response.equalsIgnoreCase("{\"result\":\"Failed!\"}")) {
-                            try {
-                                JSONObject jobj = new JSONObject(response);
-                                String result = jobj.getString("result");
-                                attendance = new Attendance_model(result);
-                                arrayList.add(attendance);
                                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(Attendance.this);
                                 recyclerView.setLayoutManager(layoutManager);
                                 recyclerView.setItemAnimator(new DefaultItemAnimator());
-                                recyclerView.setAdapter(new AttendanceAdapter(Attendance.this, arrayList));
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
+                            recyclerView.setAdapter(new ResultFailed(R.drawable.attnotmarked, Attendance.this));
+
                         } else {
                             try {
                                 JSONObject jobj = new JSONObject(response);

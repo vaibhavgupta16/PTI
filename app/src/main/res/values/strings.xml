@@ -54,4 +54,5 @@
     <string name="em">Email:</string>
     <string name="contact">Contact:</string>
     <string name="na">Name:</string>
+    <string name="no_notice">There are no new Notices to display</string>
 </resources>

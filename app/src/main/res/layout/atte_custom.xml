@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_gravity="center_horizontal"
     android:layout_marginBottom="16dp"
     android:layout_marginEnd="16dp"
     android:layout_marginStart="16dp"
@@ -57,24 +56,25 @@
         android:paddingTop="16dp">
         <TextView
             android:id="@+id/txtname"
-            style="@style/Theme.AppCompat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="casual"
             android:paddingEnd="8dp"
             android:paddingStart="8dp"
-            android:textSize="15sp" />
+            android:textColor="@color/blue"
+            android:textSize="20sp" />
 
         <TextView
             android:id="@+id/txtatt"
-            style="@style/Theme.AppCompat"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
+            android:fontFamily="sans-serif"
             android:paddingEnd="8dp"
             android:paddingStart="8dp"
             android:textAllCaps="true"
-            android:textSize="15sp" />
+            android:textSize="20sp" />
 
 
     </LinearLayout>

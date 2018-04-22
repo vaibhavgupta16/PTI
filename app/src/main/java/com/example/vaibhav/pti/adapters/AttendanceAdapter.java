@@ -19,6 +19,8 @@ import java.util.ArrayList;
 import java.util.Date;
 
 import static com.example.vaibhav.pti.Login.MY_PREFS;
+import static com.example.vaibhav.pti.R.color.green;
+import static com.example.vaibhav.pti.R.color.red;
 
 public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.MyViewHolder> {
     private ArrayList<Attendance_model> arrayList = new ArrayList<>();
@@ -38,27 +40,39 @@ public class AttendanceAdapter extends RecyclerView.Adapter<AttendanceAdapter.My
 
     @Override
     public void onBindViewHolder(AttendanceAdapter.MyViewHolder holder, int position) {
-        SimpleDateFormat ft = new SimpleDateFormat("E dd/MM/yyyy");
+        SimpleDateFormat ft = new SimpleDateFormat("dd/MM/yyyy");
         SharedPreferences sharedPreferences = attendance.getSharedPreferences(MY_PREFS, Context.MODE_PRIVATE);
         String res = sharedPreferences.getString("response", null);
         String a = arrayList.get(position).getAtt();
         Log.e("...Attendance", "" + a);
 
-        if (res.equals("{\"result\":\"Failed!\"}")) {
-            holder.txt.setText(R.string.attennotmarked);
-            holder.img.setVisibility(View.VISIBLE);
-        } else {
-            if (a.equals("null")) {
+        if (a.equals("null")) {
                 holder.txt.setText(R.string.attennotmarked);
                 holder.img.setVisibility(View.VISIBLE);
-            } else {
+        } else if (a.equals("P")) {
+            holder.txt.setText(R.string.attenmarked);
+            holder.txtclass.setText(String.format("Class: %s", arrayList.get(position).getCl()));
+            holder.txtname.setText(arrayList.get(position).getName());
+            holder.txtatt.setText(arrayList.get(position).getAtt());
+            holder.txtatt.setTextColor(attendance.getResources().getColor(green));
+            holder.txtdate.setText(String.format("Date: %s", ft.format(date)));
+
+        } else if (a.equals("A")) {
+            holder.txt.setText(R.string.attenmarked);
+            holder.txtclass.setText(String.format("Class: %s", arrayList.get(position).getCl()));
+            holder.txtname.setText(arrayList.get(position).getName());
+            holder.txtatt.setText(arrayList.get(position).getAtt());
+            holder.txtatt.setTextColor(attendance.getResources().getColor(red));
+            holder.txtdate.setText(String.format("Date: %s", ft.format(date)));
+
+        } else {
                 holder.txt.setText(R.string.attenmarked);
                 holder.txtclass.setText(String.format("Class: %s", arrayList.get(position).getCl()));
                 holder.txtname.setText(arrayList.get(position).getName());
                 holder.txtatt.setText(arrayList.get(position).getAtt());
                 holder.txtdate.setText(String.format("Date: %s", ft.format(date)));
             }
-        }
+
     }
 
     @Override
