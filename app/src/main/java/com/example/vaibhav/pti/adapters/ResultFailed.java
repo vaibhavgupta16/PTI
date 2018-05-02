@@ -3,7 +3,6 @@ package com.example.vaibhav.pti.adapters;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,7 +18,7 @@ public class ResultFailed extends RecyclerView.Adapter<ResultFailed.MyViewHolder
     public ResultFailed(int image, Context context) {
         this.image = image;
         this.context = context;
-        Log.e("Image", "" + image);
+        //Log.e("Image", "" + image);
     }
 
     @Override

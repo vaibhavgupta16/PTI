@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.example.vaibhav.pti.R;
 import com.example.vaibhav.pti.dashboardClasses.Attendance;
 import com.example.vaibhav.pti.dashboardClasses.Diary;
+import com.example.vaibhav.pti.dashboardClasses.Progress;
 import com.example.vaibhav.pti.dashboardClasses.Teacher;
 
 
@@ -56,6 +57,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.MyViewHolder> 
 
                 }
                 else if(position==2){
+                    Intent intent = new Intent(activity, Progress.class);
+                    activity.startActivity(intent);
 
                 }
                 else if(position==3){
